@@ -3,7 +3,7 @@
 ## SetList is an app that permits a user to create, edit and delete lists of sheet music, charts, tablature, or notes on songs for organization and use for reference in any circumstance, whether it be for a recording session, concert, practice, or jam session. 
 
 ## E.R.D.
-![SetList](https://user-images.githubusercontent.com/76710923/120413364-bd294b00-c31d-11eb-8b21-f4e9b83edc2e.png)
+![SetList (1)](https://user-images.githubusercontent.com/76710923/120570180-2328d780-c3dd-11eb-9ac8-a69555f7b631.png)
 
 
 
