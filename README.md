@@ -17,6 +17,7 @@ SetList provides a clean, convenient way for any musician to organize any sheet 
 - Add songs and upload text or url images
 - Create lists of songs
 - Upload urls or text notes for each song
+- Edit each song
 - Edit each list by deleting/adding songs
 - Delete songs from the database
 - Delete lists 
