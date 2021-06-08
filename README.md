@@ -19,6 +19,6 @@ SetList provides a clean, convenient way for any musician to organize any sheet 
 - Edit each list by deleting/adding songs
 - Delete songs from the database
 - Delete lists 
-- Delete fron and/or re-assign songs to any desired list
+- Delete from and/or re-assign songs to any desired list
 - Upload urls or text forso that they may have a visual reference for the music they are playing without having to carry around any physical sheet music or other printed materials when playing. 
 
