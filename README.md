@@ -16,9 +16,8 @@ https://github.com/nashvegasnate/SetList/projects/1
 SetList provides a clean, convenient way for any musician to organize any sheet music, charts, tablature, or notes to songs for any occasion. The app allows a user to:
 - Add songs and upload text or url images
 - Create lists of songs
+- Upload urls or text notes for each song
 - Edit each list by deleting/adding songs
 - Delete songs from the database
 - Delete lists 
 - Delete from and/or re-assign songs to any desired list
-- Upload urls or text forso that they may have a visual reference for the music they are playing without having to carry around any physical sheet music or other printed materials when playing. 
-
