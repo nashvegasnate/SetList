@@ -15,8 +15,3 @@ https://github.com/nashvegasnate/SetList/projects/1
 ## User Story
 SetList provides a clean, convenient way for any musician to organize any sheet music, charts, tablature, or notes to songs for any occasion. The app allows a user to upload urls or text so that they may have a visual reference for the music they are playing without having to carry around any physical sheet music or other printed materials when playing. Songs can be added to the database and assigned to any set lists the user wishes to create for use at any session. Whether you're a professional session musician, live performer, or just an amateur getting together with friends to jam, SetList provides a clean, convenient way to tote your sheet music, charts, tablatures or notes so that you'll never miss a beat!
 
-**Use this template to get up and running quickly on projects.**
-
-This is just like the webpack template. Use it, create the repo, connect it to your local and `npm i`.
-
-- [Steps to deploy](https://github.com/nss-nightclass-projects/REACT-Deployment-Netlify)
