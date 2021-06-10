@@ -1,9 +1,10 @@
 import React from 'react';
+import landing from '../assets/landing.png';
 
 export default function Home() {
   return (
     <div>
-      <h1>SetList</h1>
+    <img src={landing}></img>
     </div>
   );
 }
