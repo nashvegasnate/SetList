@@ -33,7 +33,7 @@ const NavBar = ({ user }) => {
     <div>
       <Navbar color="light" light expand="md" className='justify-content-between'>
         <NavbarBrand href="/">
-          <img src={clef} width="20" height="30" />
+          <img src={clef} width="30" height="50" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -42,11 +42,11 @@ const NavBar = ({ user }) => {
             {user !== null && (
               <NavItem className='align-self-center ml-1'>
                 {user ? (
-                  <Button size='sm' color="danger" onClick={signOutUser}>
+                  <Button size='md' color="danger" onClick={signOutUser}>
                     <i className="fas fa-sign-out-alt"></i>
                   </Button>
                 ) : (
-                  <Button size='sm' color="info" onClick={signInUser}>
+                  <Button size='md' color="info" onClick={signInUser}>
                     <i className="fas fa-sign-in-alt"></i>
                   </Button>
                 )}
