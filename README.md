@@ -13,7 +13,7 @@ https://www.figma.com/file/m0YqU3lUDSoMmR7e8RZ5KG/SetList?node-id=0%3A1
 https://github.com/nashvegasnate/SetList/projects/1
 
 ## User Story
-SetList provides a clean, convenient way for any musician to organize any sheet music, charts, tablature, or notes to songs for any occasion. The app allows a user to:
+SetList provides a clean, convenient way for any musician to organize any sheet music, charts, tablature, or notes to songs for any occasion. The app allows an authenticated user to:
 - Add songs and upload text or url images
 - Create lists of songs
 - Upload urls or text notes for each song
