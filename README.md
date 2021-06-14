@@ -9,6 +9,9 @@ https://dbdiagram.io/d/60b6c9e4b29a09603d178e98
 ## Wireframe
 https://www.figma.com/file/m0YqU3lUDSoMmR7e8RZ5KG/SetList?node-id=0%3A1
 
+## Data Flow Chart
+![SetList Prop Flow Chart](https://user-images.githubusercontent.com/76710923/121929491-e1662e00-cd06-11eb-8c4d-ea8b7cdd0811.png)
+
 ## Project Board
 https://github.com/nashvegasnate/SetList/projects/1
 
