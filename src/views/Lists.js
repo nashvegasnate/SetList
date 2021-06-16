@@ -13,7 +13,7 @@ const ListContainer = styled.div`
   justify-content: center;
   margin-top: 5%;
 `;
-export default function Lists({ user }) {
+function Lists({ user }) {
   const [lists, setLists] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
@@ -60,3 +60,5 @@ export default function Lists({ user }) {
 Lists.propTypes = {
   user: PropTypes.any,
 };
+
+export default Lists;

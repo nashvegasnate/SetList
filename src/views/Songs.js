@@ -12,7 +12,7 @@ const SongContainer = styled.div`
   justify-content: center;
   margin-top: 5%;
 `;
-export default function Songs({ user }) {
+function Songs({ user }) {
   const [songs, setSongs] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
@@ -52,3 +52,4 @@ export default function Songs({ user }) {
 Songs.propTypes = {
   user: PropTypes.any,
 };
+export default Songs;

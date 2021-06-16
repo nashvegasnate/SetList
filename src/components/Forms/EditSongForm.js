@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 
 export default function EditSongForm() {
   return (
@@ -16,7 +17,8 @@ export default function EditSongForm() {
           <input></input>
           <label>Text: </label>
           <input></input>
-          <button type='submit'></button>
+          <Button color="info" type='submit' className="mt-4 ml-1"
+></Button>
         </form>
       </div>
     </>

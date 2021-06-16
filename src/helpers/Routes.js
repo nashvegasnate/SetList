@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Lists from '../views/Lists';
 import Songs from '../views/Songs';
-import SingleList from '../views/SingleList';
+// import SingleList from '../views/SingleList';
 
-export default function Routes({ user }) {
+function Routes({ user }) {
   return (
     <div>
       <Switch>
@@ -21,7 +21,7 @@ export default function Routes({ user }) {
         component={() => (
           <Songs user={user}/>)}
           />
-        <Route exact path='/lists/:firebaseKey' component={SingleList} />
+        {/* <Route exact path='/lists/:firebaseKey' component={SingleList} /> */}
 
       </Switch>
     </div>
@@ -31,3 +31,5 @@ export default function Routes({ user }) {
 Routes.propTypes = {
   user: PropTypes.any
 };
+
+export default Routes;
