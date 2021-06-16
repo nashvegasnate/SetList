@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import ListCard from '../components/Cards/ListCard';
 import AddListForm from '../components/Forms/AddListForm';
+import { getLists } from '../helpers/data/ListsData';
+// import { getSongs } from '../helpers/data/SongsData';
 
 const ListContainer = styled.div`
   display: flex;
@@ -11,15 +13,21 @@ const ListContainer = styled.div`
   justify-content: center;
   margin-top: 5%;
 `;
-export default function Lists({
-  setLists, lists, user
-}) {
+export default function Lists({ user }) {
+  const [lists, setLists] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
   };
-  // const [lists, setLists] = useState([]);
   // const [songs, setSongs] = useState([]);
+
+  useEffect(() => {
+    getLists(user.uid).then(setLists);
+  }, []);
+
+  // useEffect(() => {
+  //   getSongs().then(setSongs);
+  // }, []);
 
   return (
    <>
@@ -39,24 +47,16 @@ export default function Lists({
       {lists?.map((listInfo) => (
         <ListCard
         key={listInfo.firebaseKey}
-        firebaseKey={listInfo.firebaseKey}
-        image={listInfo.image}
-        title={listInfo.title}
+        list={listInfo}
         user={user}
         setLists={setLists}
-        // setSongs={setSongs}
-        uid={listInfo.uid}
         />
       ))}
     </ListContainer>
-      {/* <h1>This is the Lists page</h1> */}
   </>
   );
 }
 
 Lists.propTypes = {
   user: PropTypes.any,
-  lists: PropTypes.array,
-  setLists: PropTypes.func,
-  // setSongs: PropTypes.func,
 };

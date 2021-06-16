@@ -5,17 +5,21 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/Navigation/NavBar';
 import Routes from '../helpers/Routes';
 import './App.scss';
-import { getSongs } from '../helpers/data/SongsData';
-import { getLists } from '../helpers/data/ListsData';
+// import { getSongs } from '../helpers/data/SongsData';
+// import { getLists } from '../helpers/data/ListsData';
 
 function App() {
+  // const [songs, setSongs] = useState([]);
+  // const [lists, setLists] = useState([]);
   const [user, setUser] = useState(null);
-  const [songs, setSongs] = useState([]);
-  const [lists, setLists] = useState([]);
 
-  useEffect(() => {
-    getLists().then(setLists);
-  }, []);
+  // useEffect(() => {
+  //   getLists().then(setLists);
+  // }, []);
+
+  // useEffect(() => {
+  //   getSongs().then(setSongs);
+  // }, []);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -26,8 +30,8 @@ function App() {
           uid: authed.uid,
           user: authed.email.split('@')[0],
         };
-        getLists(authed.uid).then((listsArray) => setLists(listsArray));
-        getSongs(authed.uid).then((songsArray) => setSongs(songsArray));
+        // getLists(authed.uid).then((listsArray) => setLists(listsArray));
+        // getSongs(authed.uid).then((songsArray) => setSongs(songsArray));
         setUser(userInfoObj);
       } else if (user || user === null) {
         setUser(false);
@@ -38,13 +42,15 @@ function App() {
   return (
     <div className='App'>
     <Router>
-      <NavBar user={user} setSongs={setSongs} />
+      <NavBar user={user}
+      // setSongs={setSongs}
+      />
       <Routes
-      lists={lists}
-      setLists={setLists}
       user={user}
-      songs={songs}
-      setSongs={setSongs}
+      // lists={lists}
+      // setLists={setLists}
+      // songs={songs}
+      // setSongs={setSongs}
       />
     </Router>
     </div>

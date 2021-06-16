@@ -12,10 +12,7 @@ import { deleteListSongs } from '../../helpers/data/ListSongsData';
 import { getSongs } from '../../helpers/data/SongsData';
 
 function ListCard({
-  image,
-  title,
-  firebaseKey,
-  // uid,
+  list,
   user,
   setLists,
   setSongs
@@ -23,7 +20,7 @@ function ListCard({
   const handleDelete = (type) => {
     switch (type) {
       case 'delete':
-        deleteListSongs(firebaseKey, user.uid)
+        deleteListSongs(list.firebaseKey, user.uid)
           .then(setLists)
           .then(() => getSongs(user.uid))
           .then(setSongs);
@@ -34,10 +31,10 @@ function ListCard({
 
   const history = useHistory();
   const handleClick = () => {
-    history.push(`lists/${firebaseKey}`);
+    history.push(`lists/${list.firebaseKey}`);
   };
 
-  const ListBoard = styled.div`
+  const ListSheet = styled.div`
   width: 300px;
   height: auto;
   margin: 15px;
@@ -45,28 +42,29 @@ function ListCard({
 `;
 
   return (
-    <ListBoard>
+    <ListSheet>
       <Card body id="listCard">
-        <CardImg id="cardImg" src={image}></CardImg>
-        <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{title}</CardSubtitle>
+        <CardImg id="cardImg" src={list.image}></CardImg>
+        <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{list.title}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
           <Button className='btn-md' color="danger" onClick={() => handleDelete('delete')}><i className="far fa-trash-alt"></i></Button>
           <Button className='btn-md mr-1 ml-5 p-2' color="info" onClick={() => handleClick()}>View Songs</Button>
         </div>
       </Card>
-    </ListBoard>
+    </ListSheet>
   );
 }
 
 ListCard.propTypes = {
-  firebaseKey: PropTypes.string.isRequired,
+  firebaseKey: PropTypes.string,
   image: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   setLists: PropTypes.func,
   setSongs: PropTypes.func,
   handleClick: PropTypes.func,
   user: PropTypes.any,
-  // uid: PropTypes.string.isRequired
+  list: PropTypes.object,
+  uid: PropTypes.string,
 };
 
 export default ListCard;
