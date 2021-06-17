@@ -22,7 +22,7 @@ function Lists({ user }) {
   // const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    getLists(user.uid).then(setLists);
+    getLists(user?.uid).then(setLists);
   }, []);
 
   // useEffect(() => {

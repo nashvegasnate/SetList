@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Lists from '../views/Lists';
 import Songs from '../views/Songs';
-// import SingleList from '../views/SingleList';
+import SingleList from '../views/SingleList';
 
 function Routes({ user }) {
   return (
@@ -21,7 +21,11 @@ function Routes({ user }) {
         component={() => (
           <Songs user={user}/>)}
           />
-        {/* <Route exact path='/lists/:firebaseKey' component={SingleList} /> */}
+        <Route
+        exact path='/listSongs/:id'
+        user={user}
+        component={() => <SingleList user={user}/>}
+          />
 
       </Switch>
     </div>

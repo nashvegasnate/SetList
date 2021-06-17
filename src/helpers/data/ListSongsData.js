@@ -1,5 +1,31 @@
-import { deleteList, getSingleList } from './ListsData';
-import { deleteSong, getListSongs } from './SongsData';
+// import firebase from 'firebase/app';
+// import axios from 'axios';
+// import 'firebase/auth';
+// import firebaseConfig from '../apiKeys';
+import { deleteList, getSingleList, getLists } from './ListsData';
+import { deleteSong, getListSongs, getSongs } from './SongsData';
+
+// const dbUrl = firebaseConfig.databaseURL;
+
+// const getListSongs = () => new Promise((resolve, reject) => {
+//   axios.get(`${dbUrl}/listSongs.json`)
+//     .then((response) => resolve(Object.values(response.data)))
+//     .catch((error) => reject(error));
+// });
+
+const listsWithSongs = (firebaseKey) => new Promise((resolve, reject) => {
+  Promise.all([getSongs(firebaseKey), getLists(firebaseKey), getListSongs(firebaseKey)])
+    .then(([songs, lists, songListsJoin]) => {
+      const allListInfoArray = lists.map((list) => {
+        const listRelationshipsArray = songListsJoin.filter((sl) => sl.listId === list.firebaseKey);
+
+        const songInfoArray = listRelationshipsArray.map((listRelationship) => songs.find((song) => song.firebaseKey === listRelationship.songId));
+
+        return { ...list, songs: songInfoArray };
+      });
+      resolve(allListInfoArray);
+    }).catch((error) => reject(error));
+});
 
 // DELETE ALL THE SONGS BELONGING TO A SPECIFIED LIST
 const deleteListSongs = (firebaseKey, uid) => new Promise((resolve, reject) => {
@@ -21,4 +47,5 @@ const listsAndSongs = (firebaseKey) => new Promise((resolve, reject) => {
 export {
   deleteListSongs,
   listsAndSongs,
+  listsWithSongs
 };

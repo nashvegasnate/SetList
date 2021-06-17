@@ -21,7 +21,7 @@ function Songs({ user }) {
   // const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    getSongs(user.uid).then(setSongs);
+    getSongs(user?.uid).then(setSongs);
   }, []);
 
   return (

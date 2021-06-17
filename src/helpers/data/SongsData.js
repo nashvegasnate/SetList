@@ -53,6 +53,12 @@ const getListSongs = (firebaseKey) => new Promise((resolve, reject) => {
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
+// const getListSongs = (listSongsObject, id) => new Promise((resolve, reject) => {
+//   axios.get(`${dbUrl}/listSongs/${id}.json`, listSongsObject)
+//     .then((response) => resolve(Object.values(response.data)))
+//     .catch((error) => reject(error));
+//   console.warn();
+// });
 
 // SEARCH SONGS
 const searchSongs = (uid, searchValue) => new Promise((resolve, reject) => {
