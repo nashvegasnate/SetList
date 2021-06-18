@@ -7,7 +7,6 @@ export default function AddListForm({ user, formTitle, setLists }) {
   const [list, setList] = useState({
     title: '',
     image: '',
-    firebaseKey: '',
     uid: user.uid
   });
 
@@ -58,5 +57,5 @@ export default function AddListForm({ user, formTitle, setLists }) {
 AddListForm.propTypes = {
   user: PropTypes.any,
   formTitle: PropTypes.string,
-  setLists: PropTypes.func
+  setLists: PropTypes.func,
 };

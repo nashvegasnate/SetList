@@ -7,14 +7,13 @@ import { useHistory } from 'react-router-dom';
 import { createSong, updateSong } from '../../helpers/data/SongsData';
 
 export default function AddSongForm({
-  user, formTitle, setSongs, title, image, id, lists, firebaseKey
+  user, formTitle, setSongs, title, image, lists, firebaseKey
 }) {
   const [song, setSong] = useState({
     title: title || '',
     image: image || '',
     firebaseKey: firebaseKey || null,
     uid: user.uid,
-    id: id || '',
   });
   console.warn(song);
   const handleInputChange = (e) => {
@@ -103,5 +102,4 @@ AddSongForm.propTypes = {
   image: PropTypes.string,
   firebaseKey: PropTypes.string,
   lists: PropTypes.array,
-  id: PropTypes.any,
 };
