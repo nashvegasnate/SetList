@@ -5,7 +5,7 @@ import {
   Button,
   Card,
   CardSubtitle,
-  CardImg
+  CardLink
 } from 'reactstrap';
 // import { Button } from 'reactstrap';
 import styled from 'styled-components';
@@ -22,6 +22,11 @@ function SongCard({
   lists
 }) {
   const [updating, setUpdating] = useState(false);
+  // const history = useHistory();
+  // const handleClick = () => {
+  //   history.push(`songs/${song.firebaseKey}`);
+  // };
+
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
@@ -38,23 +43,21 @@ function SongCard({
     }
   };
 
-  // const history = useHistory();
-  // const handleClick = () => {
-  //   history.push(`songs/${song.firebaseKey}`);
-  // };
-
   const SongSheet = styled.div`
-  width: 300px;
-  height: auto;
+  width: 250px;
+  height: 200px;
   margin: 15px;
-  box-shadow: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 10px;
 `;
 
   return (
     <SongSheet>
       <Card body id="songCard" key={firebaseKey}>
-        <CardImg id="cardImg" src={song.image}></CardImg>
-        <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{song.title}</CardSubtitle>
+        <CardSubtitle tag="h3" className="text-center mt-1 mb-3">{song?.title}</CardSubtitle>
+        <CardLink id="cardImg" href={song?.image}>Chart Link</CardLink>
+        <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{song?.text}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
         <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
         <Button className='btn-md p-2 ml-1' color="info" onClick={() => handleClick('update')}>
@@ -63,12 +66,13 @@ function SongCard({
       </div>
       {
         updating && <EditSongForm
-        formTitle='Update Song'
+        formTitle='Edit Song'
         setSongs={setSongs}
         firebaseKey={firebaseKey}
         user={user}
         title={title}
         lists={lists}
+        // song={song}
         // image={image}
         // text={text}
         // uid={uid}
@@ -84,7 +88,7 @@ SongCard.propTypes = {
   firebaseKey: PropTypes.string,
   image: PropTypes.string,
   title: PropTypes.string,
-  handleClick: PropTypes.func,
+  // handleClick: PropTypes.func,
   user: PropTypes.any,
   setSongs: PropTypes.func,
   lists: PropTypes.array,

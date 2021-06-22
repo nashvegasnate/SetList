@@ -6,12 +6,13 @@ import ListCard from '../components/Cards/ListCard';
 import AddListForm from '../components/Forms/AddListForm';
 import { getLists } from '../helpers/data/ListsData';
 // import { getSongs } from '../helpers/data/SongsData';
+// import doubleBass from '../assets/doubleBass.jpeg';
 
 const ListContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 3%;
 `;
 function Lists({ user }) {
   const [lists, setLists] = useState([]);
@@ -23,6 +24,7 @@ function Lists({ user }) {
 
   useEffect(() => {
     getLists(user?.uid).then(setLists);
+    console.warn(getLists);
   }, []);
 
   // useEffect(() => {
@@ -30,10 +32,10 @@ function Lists({ user }) {
   // }, []);
 
   return (
-   <>
+   <div className="lists-page">
     <section className="header mt-2">
       { !showButton
-        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add A List</Button>
+        ? <Button className="m-2 btn-lg" color='primary' onClick={handleClick}>Add A List</Button>
         : <div>
         <Button className="m-2 btn-lg" color='info' onClick={handleClick}>Close</Button>
           <AddListForm className="justify-content-center mt-3" setLists={setLists} user={user} lists={lists}/>
@@ -53,7 +55,7 @@ function Lists({ user }) {
         />
       ))}
     </ListContainer>
-  </>
+  </div>
   );
 }
 

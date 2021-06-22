@@ -22,7 +22,7 @@ function Routes({ user }) {
           <Songs user={user}/>)}
           />
         <Route
-        exact path='/listSongs/:id'
+        exact path='/listSongs/:listId'
         user={user}
         component={() => <SingleList user={user}/>}
           />

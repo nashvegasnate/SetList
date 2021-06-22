@@ -15,14 +15,12 @@ function ListCard({
   list,
   user,
   setLists,
-  setSongs,
-  firebaseKey,
-  id
+  setSongs
 }) {
   const handleDelete = (type) => {
     switch (type) {
       case 'delete':
-        deleteListSongs(id)
+        deleteListSongs(list.firebaseKey, user.uid)
           .then(setLists)
           .then(() => getSongs(user.uid))
           .then(setSongs);
@@ -33,12 +31,12 @@ function ListCard({
 
   const history = useHistory();
   const handleClick = () => {
-    history.push(`lists/${firebaseKey}`);
+    history.push(`listSongs/${list.firebaseKey}`);
   };
 
   const ListSheet = styled.div`
-  width: 300px;
-  height: auto;
+  width: 250px;
+  height: 400px;
   margin: 15px;
   box-shadow: 50px;
 `;
@@ -46,11 +44,11 @@ function ListCard({
   return (
     <ListSheet>
       <Card body id="listCard">
-        <CardImg id="cardImg" src={list.image}></CardImg>
+        <CardImg id="cardImg" height="auto" src={list.image}></CardImg>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{list.title}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
           <Button className='btn-md' color="danger" onClick={() => handleDelete('delete')}><i className="far fa-trash-alt"></i></Button>
-          <Button className='btn-md mr-1 ml-5 p-2' color="info" onClick={() => handleClick('view')}>View Songs</Button>
+          <Button className='btn-md mr-1 ml-5 p-2' color="info" onClick={() => handleClick()}>View Songs</Button>
         </div>
       </Card>
     </ListSheet>
@@ -67,7 +65,6 @@ ListCard.propTypes = {
   user: PropTypes.any,
   list: PropTypes.object,
   uid: PropTypes.string,
-  id: PropTypes.string
 };
 
 export default ListCard;

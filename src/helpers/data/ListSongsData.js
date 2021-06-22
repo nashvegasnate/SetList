@@ -2,7 +2,7 @@
 // import axios from 'axios';
 // import 'firebase/auth';
 // import firebaseConfig from '../apiKeys';
-import { deleteList, getSingleList, getLists } from './ListsData';
+import { deleteList, getSingleList } from './ListsData';
 import { deleteSong, getListSongs, getSongs } from './SongsData';
 
 // const dbUrl = firebaseConfig.databaseURL;
@@ -13,17 +13,15 @@ import { deleteSong, getListSongs, getSongs } from './SongsData';
 //     .catch((error) => reject(error));
 // });
 
-const listsWithSongs = (firebaseKey) => new Promise((resolve, reject) => {
-  Promise.all([getSongs(firebaseKey), getLists(firebaseKey), getListSongs(firebaseKey)])
-    .then(([songs, lists, songListsJoin]) => {
-      const allListInfoArray = lists.map((list) => {
-        const listRelationshipsArray = songListsJoin.filter((sl) => sl.listId === list.firebaseKey);
+const listsWithSongs = (uid, listId) => new Promise((resolve, reject) => {
+  const songs = getSongs(uid);
+  const listSongs = getListSongs(listId);
+  Promise.all([songs, listSongs])
+    .then(([songsResponse, listSongsResponse]) => {
+      const listRelationshipsArray = listSongsResponse.filter((sl) => sl.listId === listId);
 
-        const songInfoArray = listRelationshipsArray.map((listRelationship) => songs.find((song) => song.firebaseKey === listRelationship.songId));
-
-        return { ...list, songs: songInfoArray };
-      });
-      resolve(allListInfoArray);
+      const songInfoArray = listRelationshipsArray.map((listRelationship) => songsResponse.find((song) => song.firebaseKey === listRelationship.songId));
+      resolve(songInfoArray);
     }).catch((error) => reject(error));
 });
 

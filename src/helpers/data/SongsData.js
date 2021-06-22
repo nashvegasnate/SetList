@@ -48,17 +48,11 @@ const updateSong = (songObject, firebaseKey) => new Promise((resolve, reject) =>
     });
 });
 // GET SONGS THAT BELONG TO SINGLE LIST
-const getListSongs = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/songs.json?orderBy="firebaseKey"&equalTo="${firebaseKey}"`)
+const getListSongs = (listId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/listSongs.json?orderBy="listId"&equalTo="${listId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
-// const getListSongs = (listSongsObject, id) => new Promise((resolve, reject) => {
-//   axios.get(`${dbUrl}/listSongs/${id}.json`, listSongsObject)
-//     .then((response) => resolve(Object.values(response.data)))
-//     .catch((error) => reject(error));
-//   console.warn();
-// });
 
 // SEARCH SONGS
 const searchSongs = (uid, searchValue) => new Promise((resolve, reject) => {

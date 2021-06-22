@@ -10,7 +10,7 @@ const SongContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin-top: 5%;
+  padding: 5px;
 `;
 function Songs({ user }) {
   const [songs, setSongs] = useState([]);
@@ -22,13 +22,14 @@ function Songs({ user }) {
 
   useEffect(() => {
     getSongs(user?.uid).then(setSongs);
+    console.warn(getSongs);
   }, []);
 
   return (
-    <>
+    <div className="songs-page">
     <section className="header mt-2">
       { !showButton
-        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Song</Button>
+        ? <Button className="m-2 btn-lg" color='primary' onClick={handleClick}>Add Song</Button>
         : <div>
         <Button className="m-2 btn-lg" color='info' onClick={handleClick}>Close</Button>
         <AddSongForm className="justify-content-center mt-3" setSongs={setSongs} user={user} songs={songs}/>
@@ -45,7 +46,7 @@ function Songs({ user }) {
       />
       ))}
       </SongContainer>
-    </>
+    </div>
   );
 }
 

@@ -17,8 +17,7 @@ export default function EditSongForm() {
           <input></input>
           <label>Text: </label>
           <input></input>
-          <Button color="info" type='submit' className="mt-4 ml-1"
-></Button>
+          <Button color="success" type='submit' className="mt-2 p-2">Submit</Button>
         </form>
       </div>
     </>
