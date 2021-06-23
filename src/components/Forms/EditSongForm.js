@@ -1,25 +1,108 @@
-import React from 'react';
-import { Button } from 'reactstrap';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  Button,
+  Label,
+  Input,
+  Form
+} from 'reactstrap';
+import { createSong, updateSong } from '../../helpers/data/SongsData';
 
-export default function EditSongForm() {
+export default function EditSongForm({
+  setSongs,
+  user,
+  lists,
+  title,
+  image,
+  text,
+  firebaseKey
+}) {
+  const [song, setSong] = useState({
+    title: title || '',
+    image: image || '',
+    text: text || '',
+    firebaseKey: firebaseKey || null,
+    uid: user.uid
+  });
+  const history = useHistory();
+
+  const handleInputChange = (e) => {
+    setSong((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (song.firebaseKey) {
+      updateSong(song.uid, song.firebaseKey, song).then(setSongs);
+    } else {
+      createSong(song.uid, song).then((songsArray) => setSongs(songsArray));
+      history.push('/songs');
+    }
+  };
+
   return (
     <>
       <div className='song-form'>
-        <form
-        id='edit-song-form'
-        autoComplete='off'
-        // onSubmit={}
-        >
+        <Form id='edit-song-form'
+          autoComplete='off'
+          onSubmit={handleSubmit}
+          >
           <h2>Edit Song</h2>
-          <label>Title: </label>
-          <input></input>
-          <label>Image: </label>
-          <input></input>
-          <label>Text: </label>
-          <input></input>
+          <Label>Title: </Label>
+          <Input
+            name='title'
+            type='text'
+            value={song.title}
+            onChange={handleInputChange}
+            >
+          </Input>
+          <Label>Image: </Label>
+          <Input
+            name='image'
+            type='text'
+            value={song.image}
+            onChange={handleInputChange}
+            >
+          </Input>
+          <Label>Text:</Label>
+          <Input
+            name='text'
+            type='text'
+            value={song.text}
+            onChange={handleInputChange}
+            >
+          </Input>
+          <Label>Assign To List</Label>
+          <Input
+          type="select"
+          name="firebaseKey"
+          placeholder="List Name"
+          id="exampleSelect"
+          onChange={handleInputChange}
+        >
+          {lists?.map((list) => (
+            <option key={list.firebaseKey} value={list.firebaseKey}>
+              {list.title}
+            </option>
+          ))}
+        </Input>
           <Button color="success" type='submit' className="mt-2 p-2">Submit</Button>
-        </form>
+        </Form>
       </div>
     </>
   );
 }
+
+EditSongForm.propTypes = {
+  setSongs: PropTypes.func,
+  user: PropTypes.any,
+  lists: PropTypes.array,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  text: PropTypes.string,
+  firebaseKey: PropTypes.string
+};

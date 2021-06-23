@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import 'firebase/auth';
 import axios from 'axios';
 import firebaseConfig from '../apiKeys';
@@ -40,13 +40,12 @@ const getSingleSong = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 // UPDATE A SONG'S INFO IN REAL TIME
-const updateSong = (songObject, firebaseKey) => new Promise((resolve, reject) => {
+const updateSong = (uid, firebaseKey, songObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/songs/${firebaseKey}.json`, songObject)
-    .then(() => {
-      getSongs(firebase.auth().currentUser.uid).then((songsArray) => resolve(songsArray))
-        .catch((error) => reject(error));
-    });
+    .then(() => getSongs(uid)).then((songsArray) => resolve(songsArray))
+    .catch((error) => reject(error));
 });
+
 // GET SONGS THAT BELONG TO SINGLE LIST
 const getListSongs = (listId) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/listSongs.json?orderBy="listId"&equalTo="${listId}"`)

@@ -15,11 +15,10 @@ import EditSongForm from '../Forms/EditSongForm';
 
 function SongCard({
   user,
-  song,
   setSongs,
   firebaseKey,
-  title,
-  lists
+  lists,
+  ...song
 }) {
   const [updating, setUpdating] = useState(false);
   // const history = useHistory();
@@ -70,13 +69,14 @@ function SongCard({
         setSongs={setSongs}
         firebaseKey={firebaseKey}
         user={user}
-        title={title}
+        title={song.title}
         lists={lists}
         // song={song}
-        // image={image}
-        // text={text}
+        image={song.image}
+        text={song.text}
         // uid={uid}
         // listId={listId}
+        {...song}
         />
       }
     </Card>

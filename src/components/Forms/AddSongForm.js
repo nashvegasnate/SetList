@@ -7,7 +7,8 @@ import {
   FormGroup,
   Label
 } from 'reactstrap';
-import { createSong } from '../../helpers/data/SongsData';
+import { useHistory } from 'react-router-dom';
+import { createSong, updateSong } from '../../helpers/data/SongsData';
 
 export default function AddSongForm({
   user,
@@ -16,11 +17,13 @@ export default function AddSongForm({
   title,
   image,
   lists,
-  firebaseKey
+  firebaseKey,
+  text
 }) {
   const [song, setSong] = useState({
     title: title || '',
     image: image || '',
+    text: text || '',
     firebaseKey: firebaseKey || null,
     uid: user.uid,
   });
@@ -36,17 +39,27 @@ export default function AddSongForm({
     console.warn(song);
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    createSong(song, user.uid).then(setSongs);
+    if (song.firebaseKey) {
+      updateSong(song, user).then(setSongs);
+    } else {
+      createSong(song, user).then(setSongs);
+      history.push('songs');
+    }
   };
+    // createSong(song, user.uid).then(setSongs);
 
   return (
     <div className="song-form-container">
-      <Form id="add-song-form" autoComplete="off" onSubmit={handleSubmit}>
+      <Form id="add-song-form" autoComplete="off"
+      onSubmit={handleSubmit}
+      >
         <h4 className="mt-4 text-center mb-2">{formTitle}</h4>
         <FormGroup>
-          <Label for="title">Title:</Label>
+          <Label>SONG TITLE</Label>
           <Input
             name="title"
             id="title"
@@ -58,44 +71,46 @@ export default function AddSongForm({
           />
         </FormGroup>
         <br></br>
+        <Label>CHART LINK</Label>
         <FormGroup>
           <Input
-            name="imageUrl"
+            name="image"
             id="image"
-            type="url"
+            type="text"
             placeholder="Image URL"
-            value={song.image}
+            value={song.imageUrl}
             onChange={handleInputChange}
             className="mt-1"
           />
         </FormGroup>
         <br></br>
+        <Label>SONG NOTES</Label>
         <FormGroup>
           <Input
             name="text"
             id="text"
             type="text"
-            placeholder="Text Field"
+            placeholder="Add Song Notes"
             value={song.text}
             onChange={handleInputChange}
             className="mt-2"
           />
         </FormGroup>
         <br></br>
-        <FormGroup>
+        <Label>ASSIGN SONG TO LIST</Label>
           <Input
             type="select"
             name="firebaseKey"
             placeholder="Assign to List"
             id="exampleSelect"
             onChange={handleInputChange}
-          />
-        </FormGroup>
+          >
           {lists?.map((list) => (
             <option key={list.firebaseKey} value={list.firebaseKey}>
               {list.title}
             </option>
           ))}
+         </Input>
         <br></br>
         <Button
           color="danger"
@@ -118,4 +133,5 @@ AddSongForm.propTypes = {
   image: PropTypes.string,
   firebaseKey: PropTypes.string,
   lists: PropTypes.array,
+  text: PropTypes.string
 };

@@ -43,6 +43,7 @@ function Songs({ user }) {
         song={songInfo}
         user={user}
         setSongs={setSongs}
+        {...songInfo}
       />
       ))}
       </SongContainer>

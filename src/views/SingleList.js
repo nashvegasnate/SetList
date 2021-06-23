@@ -28,9 +28,9 @@ export default function SingleList({ user }) {
       {listSongs?.map((listSongsInfo) => (
         <SongCard
         key={listSongsInfo?.firebaseKey}
-        listSongs={listSongsInfo}
         user={user}
         setListSongs={setListSongs}
+        {...listSongsInfo}
         // id={id}
         />
       ))}
