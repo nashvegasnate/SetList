@@ -6,7 +6,6 @@ import ListCard from '../components/Cards/ListCard';
 import AddListForm from '../components/Forms/AddListForm';
 import { getLists } from '../helpers/data/ListsData';
 // import { getSongs } from '../helpers/data/SongsData';
-// import doubleBass from '../assets/doubleBass.jpeg';
 
 const ListContainer = styled.div`
   display: flex;
@@ -60,7 +59,7 @@ function Lists({ user }) {
 }
 
 Lists.propTypes = {
-  user: PropTypes.any,
+  user: PropTypes.any.isRequired,
 };
 
 export default Lists;

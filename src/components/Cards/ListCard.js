@@ -56,15 +56,15 @@ function ListCard({
 }
 
 ListCard.propTypes = {
-  firebaseKey: PropTypes.string,
-  image: PropTypes.string,
-  title: PropTypes.string,
-  setLists: PropTypes.func,
-  setSongs: PropTypes.func,
-  handleClick: PropTypes.func,
+  firebaseKey: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  setLists: PropTypes.func.isRequired,
+  setSongs: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   user: PropTypes.any,
-  list: PropTypes.object,
-  uid: PropTypes.string,
+  list: PropTypes.object.isRequired,
+  uid: PropTypes.string.isRequired,
 };
 
 export default ListCard;

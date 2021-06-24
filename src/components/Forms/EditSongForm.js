@@ -79,7 +79,7 @@ export default function EditSongForm({
           <Label>Assign To List</Label>
           <Input
           type="select"
-          name="firebaseKey"
+          name="listId"
           placeholder="List Name"
           id="exampleSelect"
           onChange={handleInputChange}
@@ -98,11 +98,11 @@ export default function EditSongForm({
 }
 
 EditSongForm.propTypes = {
-  setSongs: PropTypes.func,
+  setSongs: PropTypes.func.isRequired,
   user: PropTypes.any,
-  lists: PropTypes.array,
-  title: PropTypes.string,
-  image: PropTypes.string,
-  text: PropTypes.string,
-  firebaseKey: PropTypes.string
+  lists: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  firebaseKey: PropTypes.string.isRequired
 };

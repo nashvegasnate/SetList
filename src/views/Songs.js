@@ -12,7 +12,7 @@ const SongContainer = styled.div`
   justify-content: center;
   padding: 5px;
 `;
-function Songs({ user }) {
+function Songs({ user, lists }) {
   const [songs, setSongs] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
@@ -43,6 +43,7 @@ function Songs({ user }) {
         song={songInfo}
         user={user}
         setSongs={setSongs}
+        lists={lists}
         {...songInfo}
       />
       ))}
@@ -53,5 +54,6 @@ function Songs({ user }) {
 
 Songs.propTypes = {
   user: PropTypes.any,
+  lists: PropTypes.array.isRequired
 };
 export default Songs;

@@ -13,7 +13,7 @@ const SongContainer = styled.div`
   padding: 5px;
 `;
 
-export default function SingleList({ user }) {
+export default function SingleList({ user, lists }) {
   const [listSongs, setListSongs] = useState([]);
   const { listId } = useParams();
 
@@ -30,6 +30,7 @@ export default function SingleList({ user }) {
         key={listSongsInfo?.firebaseKey}
         user={user}
         setListSongs={setListSongs}
+        lists={lists}
         {...listSongsInfo}
         // id={id}
         />
@@ -40,5 +41,6 @@ export default function SingleList({ user }) {
 }
 
 SingleList.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  lists: PropTypes.array.isRequired
 };

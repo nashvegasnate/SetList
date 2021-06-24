@@ -100,7 +100,7 @@ export default function AddSongForm({
         <Label>ASSIGN SONG TO LIST</Label>
           <Input
             type="select"
-            name="firebaseKey"
+            name="listId"
             placeholder="Assign to List"
             id="exampleSelect"
             onChange={handleInputChange}
@@ -127,11 +127,11 @@ export default function AddSongForm({
 
 AddSongForm.propTypes = {
   user: PropTypes.any,
-  formTitle: PropTypes.string,
-  setSongs: PropTypes.func,
-  title: PropTypes.string,
-  image: PropTypes.string,
-  firebaseKey: PropTypes.string,
-  lists: PropTypes.array,
-  text: PropTypes.string
+  formTitle: PropTypes.string.isRequired,
+  setSongs: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  firebaseKey: PropTypes.string.isRequired,
+  lists: PropTypes.array.isRequired,
+  text: PropTypes.string.isRequired
 };

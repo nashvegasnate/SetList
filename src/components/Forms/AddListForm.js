@@ -56,6 +56,6 @@ export default function AddListForm({ user, formTitle, setLists }) {
 
 AddListForm.propTypes = {
   user: PropTypes.any,
-  formTitle: PropTypes.string,
-  setLists: PropTypes.func,
+  formTitle: PropTypes.string.isRequired,
+  setLists: PropTypes.func.isRequired,
 };

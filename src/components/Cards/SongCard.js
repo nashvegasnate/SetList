@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 // import { Button } from 'reactstrap';
 import styled from 'styled-components';
-import { deleteSong } from '../../helpers/data/SongsData';
+import { deleteSong, getSongs } from '../../helpers/data/SongsData';
 import EditSongForm from '../Forms/EditSongForm';
 // import { getSongs } from '../../helpers/data/SongsData';
 
@@ -29,10 +29,10 @@ function SongCard({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteSong(song.firebaseKey, user.uid)
+        deleteSong(firebaseKey, user.uid)
+          // .then(setSongs);
+          .then(() => getSongs(user.uid))
           .then(setSongs);
-        // .then(() => getSongs(user.uid))
-        // .then(setSongs);
         break;
       case 'update':
         setUpdating((prevState) => !prevState);
@@ -85,17 +85,15 @@ function SongCard({
 }
 
 SongCard.propTypes = {
-  firebaseKey: PropTypes.string,
-  image: PropTypes.string,
-  title: PropTypes.string,
-  // handleClick: PropTypes.func,
+  firebaseKey: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   user: PropTypes.any,
-  setSongs: PropTypes.func,
-  lists: PropTypes.array,
-  text: PropTypes.string,
-  uid: PropTypes.string,
-  listId: PropTypes.string,
-  song: PropTypes.object
+  setSongs: PropTypes.func.isRequired,
+  lists: PropTypes.array.isRequired,
+  text: PropTypes.string.isRequired,
+  uid: PropTypes.string.isRequired,
+  song: PropTypes.object.isRequired
 };
 
 export default SongCard;
