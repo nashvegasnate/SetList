@@ -26,6 +26,7 @@ export default function EditSongForm({
     uid: user.uid
   });
   const history = useHistory();
+  console.warn(lists);
 
   const handleInputChange = (e) => {
     setSong((prevState) => ({

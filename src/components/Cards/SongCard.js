@@ -33,6 +33,8 @@ function SongCard({
           // .then(setSongs);
           .then(() => getSongs(user.uid))
           .then(setSongs);
+        console.warn(firebaseKey);
+        console.warn(user.uid);
         break;
       case 'update':
         setUpdating((prevState) => !prevState);
@@ -41,6 +43,7 @@ function SongCard({
         console.warn('nothing selected');
     }
   };
+  console.warn(lists);
 
   const SongSheet = styled.div`
   width: 250px;

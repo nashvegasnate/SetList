@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import ListCard from '../components/Cards/ListCard';
 import AddListForm from '../components/Forms/AddListForm';
-import { getLists } from '../helpers/data/ListsData';
 // import { getSongs } from '../helpers/data/SongsData';
 
 const ListContainer = styled.div`
@@ -13,18 +12,13 @@ const ListContainer = styled.div`
   justify-content: center;
   margin-top: 3%;
 `;
-function Lists({ user }) {
-  const [lists, setLists] = useState([]);
+function Lists({ user, lists, setLists }) {
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
   };
+  console.warn(lists);
   // const [songs, setSongs] = useState([]);
-
-  useEffect(() => {
-    getLists(user?.uid).then(setLists);
-    console.warn(getLists);
-  }, []);
 
   // useEffect(() => {
   //   getSongs().then(setSongs);
@@ -59,7 +53,9 @@ function Lists({ user }) {
 }
 
 Lists.propTypes = {
-  user: PropTypes.any.isRequired,
+  user: PropTypes.any,
+  lists: PropTypes.array.isRequired,
+  setLists: PropTypes.func.isRequired
 };
 
 export default Lists;
