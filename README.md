@@ -10,7 +10,7 @@ https://dbdiagram.io/d/60b6c9e4b29a09603d178e98
 https://www.figma.com/file/m0YqU3lUDSoMmR7e8RZ5KG/SetList?node-id=0%3A1
 
 ## Data Flow Chart
-![SetList Prop Flow Chart (1)](https://user-images.githubusercontent.com/76710923/121984039-e6070280-cd57-11eb-8905-7b0ea4e078d0.png)
+https://lucid.app/lucidchart/08d28a24-fc4b-4eb8-81ef-e7c5900d1891/edit?beaconFlowId=0C27D6294979F729&page=0_0#
 
 ## Project Board
 https://github.com/nashvegasnate/SetList/projects/1
