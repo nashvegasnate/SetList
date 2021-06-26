@@ -131,7 +131,7 @@ AddSongForm.propTypes = {
   setSongs: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  firebaseKey: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  firebaseKey: PropTypes.string.isRequired
 };

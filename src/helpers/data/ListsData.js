@@ -44,6 +44,7 @@ const updateList = (firebaseKey, listObject) => new Promise((resolve, reject) =>
     .then(() => getLists(firebase.auth().currentUser.uid)).then((listsArray) => resolve(listsArray))
     .catch((error) => reject(error));
 });
+
 export {
   getLists,
   getSingleList,

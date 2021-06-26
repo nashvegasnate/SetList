@@ -99,10 +99,10 @@ export default function EditSongForm({
 }
 
 EditSongForm.propTypes = {
-  setSongs: PropTypes.func.isRequired,
   user: PropTypes.any,
-  lists: PropTypes.array.isRequired,
+  setSongs: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  lists: PropTypes.array.isRequired,
   image: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   firebaseKey: PropTypes.string.isRequired
