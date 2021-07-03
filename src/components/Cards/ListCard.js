@@ -45,10 +45,11 @@ function ListCard({
   const ListSheet = styled.div`
   width: 250px;
   height: 400px;
-  margin: 15px;
+  margin: 5px;
   box-shadow: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: 5px;
 `;
 
   return (

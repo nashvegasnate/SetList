@@ -23,7 +23,7 @@ export default function SingleList({ user, lists }) {
   console.warn(listSongs);
 
   return (
-    <>
+    <div className="singleLists-page">
     <SongContainer className="single-list-container" id="single-list-cards">
       {listSongs?.map((listSongsInfo) => (
         <SongCard
@@ -36,7 +36,7 @@ export default function SingleList({ user, lists }) {
         />
       ))}
     </SongContainer>
-    </>
+    </div>
   );
 }
 

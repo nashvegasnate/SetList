@@ -38,8 +38,8 @@ const createList = (listObject, uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-// UPDATE A LISTS'S INFO IN REAL TIME
-const updateList = (uid, firebaseKey, listObject) => new Promise((resolve, reject) => {
+// UPDATE A LISTS'S INFO
+const updateList = (firebaseKey, uid, listObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/lists/${firebaseKey}.json`, listObject)
     .then(() => getLists(uid)).then((listsArray) => resolve(listsArray))
     .catch((error) => reject(error));

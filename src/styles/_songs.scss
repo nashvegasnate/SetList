@@ -10,3 +10,15 @@
   // top: 50%;
   // left:50%;
 }
+
+.song-form {
+  display:flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 5px;
+  z-index: 1;
+  // background-color: #99C1B9;
+  // background-color: #A0CCDA;
+  background-color: #7CA5B8;
+  border-radius: 3%;
+}
