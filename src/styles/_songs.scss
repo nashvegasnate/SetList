@@ -5,11 +5,12 @@
   // background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi2bsgkVlvIFFs73SvdeCH-wwNs7ixg4J6Bo_HVdkW5U08WVBfxAYdIHAGEevwZyoy4nk&usqp=CAU);
   background-size: cover;
   height: 100em;
-  // background-repeat:repeat;
   // margin: 5em;
   // top: 50%;
   // left:50%;
+  overflow: scroll;
 }
+
 
 .song-form {
   display:flex;
@@ -19,6 +20,10 @@
   z-index: 1;
   // background-color: #99C1B9;
   // background-color: #A0CCDA;
-  background-color: #7CA5B8;
+  // background-color: #7CA5B8;
+  background-color: #F2F2F2;
+  // background-color: #CCCCCC;
+  // background-color: white;
+  border-color: black;
   border-radius: 3%;
 }
