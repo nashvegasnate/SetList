@@ -58,8 +58,8 @@ function ListCard({
         <CardImg id="cardImg" height="auto" src={list?.image}></CardImg>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{list?.title}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
-          <Button className='btn-md' color="danger" onClick={() => handleSubmit('delete')}><i className="far fa-trash-alt"></i></Button>
-          <Button className='btn-md mr-1 ml-5 p-2' color="info" onClick={() => handleClick()}>View Songs</Button>
+          <Button className='btn-md' color="danger" onClick={() => handleSubmit('delete')}><i className="far fa-trash-alt fa-lg"></i></Button>
+          <Button className='btn-md mr-1 ml-5 p-2' color="primary" onClick={() => handleClick()}><i className="fas fa-music fa-lg"></i></Button>
           <Button className='btn-md p-2 ml-1 mt-2' color="info" onClick={() => handleSubmit('update')}>
         {updating ? 'Close Form' : 'Edit List'}
       </Button>

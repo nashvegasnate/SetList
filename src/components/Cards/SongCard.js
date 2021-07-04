@@ -46,8 +46,9 @@ function SongCard({
   console.warn(lists);
 
   const SongSheet = styled.div`
+  justify-content: space-evenly;
   width: 250px;
-  height: 200px;
+  height: 250px;
   margin: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -58,10 +59,10 @@ function SongCard({
     <SongSheet>
       <Card body id="songCard" key={firebaseKey}>
         <CardSubtitle tag="h3" className="text-center mt-1 mb-3">{song?.title}</CardSubtitle>
-        <CardLink id="cardImg" href={song?.image}>Chart Link</CardLink>
+        <CardLink id="cardImg" href={song?.image}><i className="fas fa-file-alt fa-2x"></i></CardLink>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{song?.text}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
-        <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt"></i></Button>
+        <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt fa-lg"></i></Button>
         <Button className='btn-md p-2 ml-1' color="info" onClick={() => handleClick('update')}>
         {updating ? 'Close Form' : 'Edit Song'}
       </Button>

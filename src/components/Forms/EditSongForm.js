@@ -47,7 +47,7 @@ export default function EditSongForm({
 
   return (
     <>
-      <div className='song-form'>
+      <div className='song-form-container'>
         <Form id='edit-song-form'
           autoComplete='off'
           onSubmit={handleSubmit}
