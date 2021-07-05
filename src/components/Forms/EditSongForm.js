@@ -8,6 +8,7 @@ import {
   Form
 } from 'reactstrap';
 import { createSong, updateListSong, updateSong } from '../../helpers/data/SongsData';
+import { addSongList } from '../../helpers/data/ListSongsData';
 
 export default function EditSongForm({
   setSongs,
@@ -26,8 +27,22 @@ export default function EditSongForm({
     firebaseKey: firebaseKey || null,
     uid: user.uid
   });
+
+  const [songInList, setSongInList] = useState({
+    listId: '',
+    songId: song.firebaseKey,
+    uid: user.uid
+  });
+
   const history = useHistory();
   console.warn(lists);
+
+  const handleAssignList = (e) => {
+    setSongInList((prevState) => ({
+      ...prevState,
+      listId: e.target.value
+    }));
+  };
 
   const handleInputChange = (e) => {
     setSong((prevState) => ({
@@ -40,8 +55,10 @@ export default function EditSongForm({
     e.preventDefault();
     if (listId) {
       updateListSong(listId, song.uid, song.firebaseKey, song).then(setSongs);
+      addSongList(songInList);
     } else if (song.firebaseKey) {
       updateSong(song.uid, song.firebaseKey, song).then(setSongs);
+      addSongList(songInList);
     } else {
       createSong(song.uid, song).then((songsArray) => setSongs(songsArray));
       history.push('/songs');
@@ -86,7 +103,7 @@ export default function EditSongForm({
           name="listId"
           placeholder="List Name"
           id="exampleSelect"
-          onChange={handleInputChange}
+          onChange={handleAssignList}
         >
           {lists?.map((list) => (
             <option key={list.firebaseKey} value={list.firebaseKey}>

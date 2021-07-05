@@ -32,7 +32,7 @@ function Songs({ user, lists }) {
         ? <Button className="m-2 btn-lg" color='primary' onClick={handleClick}>Add Song</Button>
         : <div>
         <Button className="m-2 btn-lg" color='info' onClick={handleClick}>Close</Button>
-        <AddSongForm className="justify-content-center mt-3" lists={lists} setSongs={setSongs} user={user} songs={songs}/>
+        <AddSongForm className="justify-content-center mt-3" lists={lists} setSongs={setSongs} user={user} songs={songs} setShowButton={setShowButton} />
         </div>
       }
     </section>

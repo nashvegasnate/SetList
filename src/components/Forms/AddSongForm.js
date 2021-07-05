@@ -18,7 +18,8 @@ export default function AddSongForm({
   image,
   lists,
   firebaseKey,
-  text
+  text,
+  setShowButton
 }) {
   const [song, setSong] = useState({
     title: title || '',
@@ -27,9 +28,14 @@ export default function AddSongForm({
     firebaseKey: firebaseKey || null,
     uid: user.uid,
   });
+  const [songInList, setSongInList] = useState('');
   console.warn(song);
 
   // const history = useHistory();
+  const handleAssignList = (e) => {
+    setSongInList(e.target.value);
+  };
+  console.warn(songInList);
 
   const handleInputChange = (e) => {
     setSong((prevState) => ({
@@ -46,8 +52,9 @@ export default function AddSongForm({
     if (song.firebaseKey) {
       updateSong(song, user).then(setSongs);
     } else {
-      createSong(song, user).then(setSongs);
-      history.push('songs');
+      createSong(song, user.uid, songInList).then(setSongs);
+      setShowButton(false);
+      history.push('/songs');
     }
   };
     // createSong(song, user.uid).then(setSongs);
@@ -103,7 +110,7 @@ export default function AddSongForm({
             name="listId"
             placeholder="Assign to List"
             id="exampleSelect"
-            onChange={handleInputChange}
+            onChange={handleAssignList}
           >
           {lists?.map((list) => (
             <option key={list.firebaseKey} value={list.firebaseKey}>
@@ -133,5 +140,6 @@ AddSongForm.propTypes = {
   image: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
   text: PropTypes.string.isRequired,
-  firebaseKey: PropTypes.string.isRequired
+  firebaseKey: PropTypes.string.isRequired,
+  setShowButton: PropTypes.func
 };

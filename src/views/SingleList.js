@@ -26,13 +26,15 @@ export default function SingleList({ user, lists }) {
     <div className="singleLists-page">
     <SongContainer className="single-list-container" id="single-list-cards">
       {songs?.map((listSongsInfo) => (
-        <SongCard
+        listSongsInfo?.firebaseKey
+         && <SongCard
         key={listSongsInfo?.firebaseKey}
         user={user}
         setSongs={setSongs}
         lists={lists}
         {...listSongsInfo}
         listId={listId}
+        singleCard={true}
         // id={id}
         />
       ))}
