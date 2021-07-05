@@ -16,8 +16,8 @@ function ListCard({
   list,
   user,
   setLists,
-  setSongs,
-  firebaseKey,
+  // setSongs,
+  // firebaseKey,
   ...lists
 }) {
   const [updating, setUpdating] = useState(false);
@@ -27,8 +27,7 @@ function ListCard({
       case 'delete':
         deleteListSongs(list.firebaseKey, user.uid)
           .then(setLists)
-          .then(() => listsWithSongs(user.uid))
-          .then(setSongs);
+          .then(() => listsWithSongs(user.uid));
         break;
       case 'update':
         setUpdating((prevState) => !prevState);
@@ -54,7 +53,7 @@ function ListCard({
 
   return (
     <ListSheet>
-      <Card body id="listCard" key={firebaseKey}>
+      <Card body id="listCard">
         <CardImg id="cardImg" height="auto" src={list?.image}></CardImg>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{list?.title}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
@@ -70,10 +69,8 @@ function ListCard({
           setLists={setLists}
           user={user}
           lists={lists}
-          setSongs={setSongs}
           image={list.image}
           title={list.title}
-          firebaseKey={firebaseKey}
           />
         }
       </Card>
@@ -82,15 +79,9 @@ function ListCard({
 }
 
 ListCard.propTypes = {
-  firebaseKey: PropTypes.string.isRequired,
-  // image: PropTypes.string.isRequired,
-  // title: PropTypes.string.isRequired,
   setLists: PropTypes.func.isRequired,
-  setSongs: PropTypes.func.isRequired,
-  // handleClick: PropTypes.func.isRequired,
   user: PropTypes.any,
   list: PropTypes.object.isRequired,
-  // uid: PropTypes.string.isRequired,
 };
 
 export default ListCard;
