@@ -7,7 +7,7 @@ import {
   Input,
   Form
 } from 'reactstrap';
-import { createSong, updateSong } from '../../helpers/data/SongsData';
+import { createSong, updateListSong, updateSong } from '../../helpers/data/SongsData';
 
 export default function EditSongForm({
   setSongs,
@@ -16,7 +16,8 @@ export default function EditSongForm({
   title,
   image,
   text,
-  firebaseKey
+  firebaseKey,
+  listId
 }) {
   const [song, setSong] = useState({
     title: title || '',
@@ -37,7 +38,9 @@ export default function EditSongForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (song.firebaseKey) {
+    if (listId) {
+      updateListSong(listId, song.uid, song.firebaseKey, song).then(setSongs);
+    } else if (song.firebaseKey) {
       updateSong(song.uid, song.firebaseKey, song).then(setSongs);
     } else {
       createSong(song.uid, song).then((songsArray) => setSongs(songsArray));
@@ -105,5 +108,6 @@ EditSongForm.propTypes = {
   lists: PropTypes.array.isRequired,
   image: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  firebaseKey: PropTypes.string.isRequired
+  firebaseKey: PropTypes.string.isRequired,
+  listId: PropTypes.string
 };

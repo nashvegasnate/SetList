@@ -31,7 +31,7 @@ function Lists({ user, lists, setLists }) {
         ? <Button className="m-2 btn-lg" color='primary' onClick={handleClick}>Add A List</Button>
         : <div>
         <Button className="m-2 btn-lg" color='info' onClick={handleClick}>Close</Button>
-          <AddListForm className="justify-content-center mt-3" setLists={setLists} user={user} lists={lists}/>
+          <AddListForm className="justify-content-center mt-3" setLists={setLists} user={user} lists={lists} formTitle={'Add New List'}/>
       </div>
       }
     </section>

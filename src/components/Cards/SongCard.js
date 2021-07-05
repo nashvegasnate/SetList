@@ -18,6 +18,7 @@ function SongCard({
   setSongs,
   firebaseKey,
   lists,
+  listId,
   ...song
 }) {
   const [updating, setUpdating] = useState(false);
@@ -78,6 +79,7 @@ function SongCard({
         // song={song}
         image={song.image}
         text={song.text}
+        listId={listId}
         // uid={uid}
         // listId={listId}
         {...song}
@@ -97,7 +99,8 @@ SongCard.propTypes = {
   lists: PropTypes.array.isRequired,
   text: PropTypes.string.isRequired,
   uid: PropTypes.string.isRequired,
-  song: PropTypes.object.isRequired
+  song: PropTypes.object.isRequired,
+  listId: PropTypes.string
 };
 
 export default SongCard;

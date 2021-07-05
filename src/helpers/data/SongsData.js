@@ -53,6 +53,26 @@ const getListSongs = (listId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// GET SONGS FROM SINGLE LIST TO UPDATE
+const listsWithSongsUpdate = (uid, listId) => new Promise((resolve, reject) => {
+  const songs = getSongs(uid);
+  const listSongs = getListSongs(listId);
+  Promise.all([songs, listSongs])
+    .then(([songsResponse, listSongsResponse]) => {
+      const listRelationshipsArray = listSongsResponse.filter((sl) => sl.listId === listId);
+
+      const songInfoArray = listRelationshipsArray.map((listRelationship) => songsResponse.find((song) => song.firebaseKey === listRelationship.songId));
+      resolve(songInfoArray);
+    }).catch((error) => reject(error));
+});
+
+// UPDATE SONGS THAT BELONG TO A SINGLE LIST
+const updateListSong = (listId, uid, firebaseKey, songObject) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/songs/${firebaseKey}.json`, songObject)
+    .then(() => listsWithSongsUpdate(uid, listId)).then((songsArray) => resolve(songsArray))
+    .catch((error) => reject(error));
+});
+
 // SEARCH SONGS
 const searchSongs = (uid, searchValue) => new Promise((resolve, reject) => {
   getSongs(uid).then((response) => {
@@ -68,5 +88,7 @@ export {
   getSingleSong,
   updateSong,
   getListSongs,
-  searchSongs
+  searchSongs,
+  updateListSong,
+  listsWithSongsUpdate
 };

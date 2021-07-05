@@ -30,7 +30,7 @@ export default function AddListForm({ user, formTitle, setLists }) {
         autoComplete='off'
       >
         <h1>{formTitle}</h1>
-        <label>Title:</label>
+        <label>List Title:</label>
         <input
           name='title'
           type='text'

@@ -18,7 +18,7 @@ function ListCard({
   setLists,
   // setSongs,
   // firebaseKey,
-  ...lists
+  // ...lists
 }) {
   const [updating, setUpdating] = useState(false);
 
@@ -68,7 +68,7 @@ function ListCard({
           formTitle='Edit List'
           setLists={setLists}
           user={user}
-          lists={lists}
+          list={list}
           image={list.image}
           title={list.title}
           />

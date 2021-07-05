@@ -14,24 +14,25 @@ const SongContainer = styled.div`
 `;
 
 export default function SingleList({ user, lists }) {
-  const [listSongs, setListSongs] = useState([]);
+  const [songs, setSongs] = useState([]);
   const { listId } = useParams();
 
   useEffect(() => {
-    listsWithSongs(user?.uid, listId).then((response) => setListSongs(response));
+    listsWithSongs(user?.uid, listId).then((response) => setSongs(response));
   }, []);
-  console.warn(listSongs);
+  console.warn(songs);
 
   return (
     <div className="singleLists-page">
     <SongContainer className="single-list-container" id="single-list-cards">
-      {listSongs?.map((listSongsInfo) => (
+      {songs?.map((listSongsInfo) => (
         <SongCard
         key={listSongsInfo?.firebaseKey}
         user={user}
-        setListSongs={setListSongs}
+        setSongs={setSongs}
         lists={lists}
         {...listSongsInfo}
+        listId={listId}
         // id={id}
         />
       ))}

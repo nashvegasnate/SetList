@@ -9,16 +9,17 @@ import {
 } from 'reactstrap';
 import { createList, updateList } from '../../helpers/data/ListsData';
 
-export default function EditListForm({ user, setLists }) {
-  const [list, setList] = useState({
-    title: '',
-    image: '',
+export default function EditListForm({ user, setLists, list }) {
+  const [editList, setEditList] = useState({
+    firebaseKey: list.firebaseKey,
+    title: list.title,
+    image: list.image,
     uid: user.uid
   });
   // const history = useHistory();
 
   const handleInputChange = (e) => {
-    setList((prevState) => ({
+    setEditList((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }));
@@ -27,7 +28,7 @@ export default function EditListForm({ user, setLists }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (list.firebaseKey) {
-      updateList(list.uid, list.firebaseKey, list).then(setLists);
+      updateList(editList.firebaseKey, editList.uid, editList).then(setLists);
     } else {
       createList(list.uid, list).then((listsArray) => setLists(listsArray));
       // history.pushState('/lists');
@@ -46,7 +47,7 @@ export default function EditListForm({ user, setLists }) {
         <Input
           name='title'
           type='text'
-          value={list.title}
+          value={editList.title}
           onChange={handleInputChange}
         >
         </Input>
@@ -54,7 +55,7 @@ export default function EditListForm({ user, setLists }) {
         <Input
           name='image'
           type='url'
-          value={list.imageUrl}
+          value={editList.image}
           onChange={handleInputChange}
         >
         </Input>
@@ -68,4 +69,5 @@ export default function EditListForm({ user, setLists }) {
 EditListForm.propTypes = {
   user: PropTypes.any,
   setLists: PropTypes.func.isRequired,
+  list: PropTypes.object
 };
