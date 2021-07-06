@@ -4,13 +4,14 @@
 SetList is an app that permits a user to create, edit and delete lists of sheet music, charts, tablature, or notes on songs for organization and reference while playing. Whether you're a professional session musician, live performer, or just an amateur getting together with friends to jam, SetList provides a clean, convenient way to tote your tunes so that you'll never miss a beat!
 
 ## E.R.D.
-https://dbdiagram.io/d/60b6c9e4b29a09603d178e98
+![SetList (2)](https://user-images.githubusercontent.com/76710923/124654199-e3359400-de63-11eb-8d38-059344160eac.png)
 
 ## Wireframe
 https://www.figma.com/file/m0YqU3lUDSoMmR7e8RZ5KG/SetList?node-id=0%3A1
 
 ## Data Flow Chart
-https://lucid.app/lucidchart/08d28a24-fc4b-4eb8-81ef-e7c5900d1891/edit?beaconFlowId=0C27D6294979F729&page=0_0#
+![SetList Prop Flow Chart (2)](https://user-images.githubusercontent.com/76710923/124654100-bda88a80-de63-11eb-873f-52d3f5cd5792.png)
+
 
 ## Project Board
 https://github.com/nashvegasnate/SetList/projects/1
