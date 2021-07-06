@@ -7,6 +7,8 @@ import {
   CardImg
 } from 'reactstrap';
 import styled from 'styled-components';
+import { IconContext } from 'react-icons';
+import { GiMusicalNotes, GiTrashCan } from 'react-icons/gi';
 import PropTypes from 'prop-types';
 import { deleteListSongs, listsWithSongs } from '../../helpers/data/ListSongsData';
 // import { getSongs } from '../../helpers/data/SongsData';
@@ -57,8 +59,16 @@ function ListCard({
         <CardImg id="cardImg" height="auto" src={list?.image}></CardImg>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{list?.title}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
-          <Button className='btn-md' color="danger" onClick={() => handleSubmit('delete')}><i className="far fa-trash-alt fa-lg"></i></Button>
-          <Button className='btn-md mr-1 ml-5 p-2' color="primary" onClick={() => handleClick()}><i className="fas fa-music fa-lg"></i></Button>
+          <Button className='btn-md' color="danger" onClick={() => handleSubmit('delete')}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+            <div>
+              <GiTrashCan />
+            </div>
+          </IconContext.Provider></Button>
+          <Button className='btn-md ml-5' color="primary" onClick={() => handleClick()}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+            <div>
+              <GiMusicalNotes />
+            </div>
+          </IconContext.Provider></Button>
           <Button className='btn-md p-2 ml-1 mt-2' color="info" onClick={() => handleSubmit('update')}>
         {updating ? 'Close Form' : 'Edit List'}
       </Button>

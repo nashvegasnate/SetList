@@ -7,8 +7,10 @@ import {
   CardSubtitle,
   CardLink
 } from 'reactstrap';
-// import { Button } from 'reactstrap';
 import styled from 'styled-components';
+import { IconContext } from 'react-icons';
+import { GiMusicalScore, GiTrashCan } from 'react-icons/gi';
+// import { Button } from 'reactstrap';
 import { deleteSingleSong, deleteSong, getSongs } from '../../helpers/data/SongsData';
 import EditSongForm from '../Forms/EditSongForm';
 import { deleteSongFromList } from '../../helpers/data/ListSongsData';
@@ -66,12 +68,22 @@ function SongCard({
     <SongSheet>
       <Card body id="songCard" key={firebaseKey}>
         <CardSubtitle tag="h3" className="text-center mt-1 mb-3">{song?.title}</CardSubtitle>
-        <CardLink id="cardImg" href={song?.image}><i className="fas fa-file-alt fa-2x"></i></CardLink>
+        <CardLink id="cardImg" href={song?.image}>
+          <IconContext.Provider value={{ color: 'blue', size: '2em', className: 'global-class-name' }}>
+            <div>
+              <GiMusicalScore />
+            </div>
+          </IconContext.Provider>
+        </CardLink>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{song?.text}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
           {
             singleCard ? <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('singleDelete')}><i className="far fa-trash-alt fa-lg"></i></Button>
-              : <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><i className="far fa-trash-alt fa-lg"></i></Button>
+              : <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+              <div>
+                <GiTrashCan />
+              </div>
+            </IconContext.Provider></Button>
           }
         <Button className='btn-md p-2 ml-1' color="info" onClick={() => handleClick('update')}>
         {updating ? 'Close Form' : 'Edit Song'}
