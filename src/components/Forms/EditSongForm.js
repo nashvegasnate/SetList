@@ -35,7 +35,6 @@ export default function EditSongForm({
   });
 
   const history = useHistory();
-  console.warn(lists);
 
   const handleAssignList = (e) => {
     setSongInList((prevState) => ({

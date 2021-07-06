@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import {
+  Button,
+  FormGroup,
+  Form,
+  Input,
+  Label
+} from 'reactstrap';
 import { createList } from '../../helpers/data/ListsData';
 
 export default function AddListForm({ user, formTitle, setLists }) {
@@ -25,31 +31,33 @@ export default function AddListForm({ user, formTitle, setLists }) {
 
   return (
     <div className='list-form-container'>
-      <form
-        className='add-list-form'
+      <Form id='add-list-form'
         autoComplete='off'
       >
         <h1>{formTitle}</h1>
-        <label>List Title:</label>
-        <input
+        <FormGroup>
+        <Label>List Title: </Label>
+        <Input
           name='title'
           type='text'
           placeholder='Title'
           value={list.title}
           onChange={handleInputChange}
-        >
-        </input>
-        <label>Image Url:</label>
-        <input
+        />
+          </FormGroup>
+        <br></br>
+        <Label>Image Url: </Label>
+        <FormGroup>
+          <Input
           name='image'
           type='url'
           placeholder='Image URL'
           value={list.imageUrl}
           onChange={handleInputChange}
-        >
-        </input>
+        />
+        </FormGroup>
         <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
-      </form>
+      </Form>
     </div>
   );
 }

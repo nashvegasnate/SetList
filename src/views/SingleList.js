@@ -20,7 +20,6 @@ export default function SingleList({ user, lists }) {
   useEffect(() => {
     listsWithSongs(user?.uid, listId).then((response) => setSongs(response));
   }, []);
-  console.warn(songs);
 
   return (
     <div className="singleLists-page">

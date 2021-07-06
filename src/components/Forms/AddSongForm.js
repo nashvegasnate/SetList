@@ -29,20 +29,17 @@ export default function AddSongForm({
     uid: user.uid,
   });
   const [songInList, setSongInList] = useState('');
-  console.warn(song);
 
   // const history = useHistory();
   const handleAssignList = (e) => {
     setSongInList(e.target.value);
   };
-  console.warn(songInList);
 
   const handleInputChange = (e) => {
     setSong((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }));
-    console.warn(song);
   };
 
   const history = useHistory();

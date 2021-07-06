@@ -59,17 +59,17 @@ function ListCard({
         <CardImg id="cardImg" height="auto" src={list?.image}></CardImg>
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{list?.title}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
-          <Button className='btn-md' color="danger" onClick={() => handleSubmit('delete')}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+          <Button className='btn-md mr-3 ml-3' color="danger" onClick={() => handleSubmit('delete')}><IconContext.Provider value={{ color: 'white', size: '1.7em', className: 'global-class-name' }}>
             <div>
               <GiTrashCan />
             </div>
           </IconContext.Provider></Button>
-          <Button className='btn-md ml-5' color="primary" onClick={() => handleClick()}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+          <Button className='btn-md ml-3 mr-3' color="primary" onClick={() => handleClick()}><IconContext.Provider value={{ color: 'white', size: '1.7em', className: 'global-class-name' }}>
             <div>
               <GiMusicalNotes />
             </div>
           </IconContext.Provider></Button>
-          <Button className='btn-md p-2 ml-1 mt-2' color="info" onClick={() => handleSubmit('update')}>
+          <Button className='btn-md p-2 ml-1 mr-1 mt-2' color="info" onClick={() => handleSubmit('update')}>
         {updating ? 'Close Form' : 'Edit List'}
       </Button>
         </div>

@@ -38,7 +38,6 @@ function App() {
   useEffect(() => {
     getLists(user?.uid).then(setLists);
   }, []);
-  console.warn(lists);
 
   return (
     <div className='App'>

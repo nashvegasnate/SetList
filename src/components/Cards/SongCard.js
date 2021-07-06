@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -10,11 +9,9 @@ import {
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { GiMusicalScore, GiTrashCan } from 'react-icons/gi';
-// import { Button } from 'reactstrap';
 import { deleteSingleSong, deleteSong, getSongs } from '../../helpers/data/SongsData';
 import EditSongForm from '../Forms/EditSongForm';
 import { deleteSongFromList } from '../../helpers/data/ListSongsData';
-// import { getSongs } from '../../helpers/data/SongsData';
 
 function SongCard({
   user,
@@ -26,20 +23,13 @@ function SongCard({
   ...song
 }) {
   const [updating, setUpdating] = useState(false);
-  // const history = useHistory();
-  // const handleClick = () => {
-  //   history.push(`songs/${song.firebaseKey}`);
-  // };
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteSong(firebaseKey, user.uid)
-          // .then(setSongs);
           .then(() => getSongs(user.uid))
           .then(setSongs);
-        console.warn(firebaseKey);
-        console.warn(user.uid);
         break;
       case 'singleDelete':
         deleteSingleSong(firebaseKey, user.uid, listId).then(setSongs);
@@ -52,7 +42,6 @@ function SongCard({
         console.warn('nothing selected');
     }
   };
-  console.warn(lists);
 
   const SongSheet = styled.div`
   justify-content: space-evenly;
@@ -78,8 +67,12 @@ function SongCard({
         <CardSubtitle tag="h5" className="text-center mt-1 mb-3">{song?.text}</CardSubtitle>
         <div className='btn-group-md justify-content-between'>
           {
-            singleCard ? <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('singleDelete')}><i className="far fa-trash-alt fa-lg"></i></Button>
-              : <Button className='btn-md mr-1 ml-5 p-2' color="danger" onClick={() => handleClick('delete')}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+            singleCard ? <Button className='btn-md mr-1 ml-1' color="danger" onClick={() => handleClick('singleDelete')}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
+            <div>
+              <GiTrashCan />
+            </div>
+          </IconContext.Provider></Button>
+              : <Button className='btn-md mr-1 ml-1' color="danger" onClick={() => handleClick('delete')}><IconContext.Provider value={{ color: 'white', size: '1.5em', className: 'global-class-name' }}>
               <div>
                 <GiTrashCan />
               </div>

@@ -2,19 +2,28 @@
   background-color: darkgray;
   display: block;
   background-image:url(https://img2.10bestmedia.com/Images/Photos/243725/p-RymanBalcony_55_660x440_201404250311.jpg);
-  // background-image:url(https://live.staticflickr.com/65535/50882519886_dd8115a34b_b.jpg);
-  // background-image:url(https://thumbs.dreamstime.com/b/musical-instruments-stage-open-concert-live-concert-musical-instruments-stage-open-concert-140415011.jpg);
-  // background-image:url(https://takelessons.com/blog/wp-content/uploads/2014/03/Violin-Music.jpg);
   background-size: cover;
-  // position:absolute;
   height:1200px;
-  // margin: 5em;
   top: 50%;
   left:50%
 }
 
 .list-form-container {
+  display: flex;
+  flex-flow: column;
   z-index: 1;
   background-color: #F2F2F2;
   padding: 15px;
+  border-radius: 3%;
+}
+
+.add-list-form {
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  justify-content: space-between;
+  padding: 20px;
+  width: 450px;
+  justify-items: center;
 }

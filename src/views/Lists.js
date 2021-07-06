@@ -17,12 +17,6 @@ function Lists({ user, lists, setLists }) {
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
   };
-  console.warn(lists);
-  // const [songs, setSongs] = useState([]);
-
-  // useEffect(() => {
-  //   getSongs().then(setSongs);
-  // }, []);
 
   return (
    <div className="lists-page">

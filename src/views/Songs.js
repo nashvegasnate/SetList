@@ -22,7 +22,6 @@ function Songs({ user, lists }) {
 
   useEffect(() => {
     getSongs(user?.uid).then(setSongs);
-    console.warn(getSongs);
   }, []);
 
   return (
