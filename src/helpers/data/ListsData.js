@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import axios from 'axios';
 import 'firebase/auth';
 import firebaseConfig from '../apiKeys';
@@ -38,12 +38,13 @@ const createList = (listObject, uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-// UPDATE A LISTS'S INFO IN REAL TIME
-const updateList = (firebaseKey, listObject) => new Promise((resolve, reject) => {
+// UPDATE A LISTS'S INFO
+const updateList = (firebaseKey, uid, listObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/lists/${firebaseKey}.json`, listObject)
-    .then(() => getLists(firebase.auth().currentUser.uid)).then((listsArray) => resolve(listsArray))
+    .then(() => getLists(uid)).then((listsArray) => resolve(listsArray))
     .catch((error) => reject(error));
 });
+
 export {
   getLists,
   getSingleList,

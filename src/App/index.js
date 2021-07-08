@@ -6,17 +6,12 @@ import NavBar from '../components/Navigation/NavBar';
 import Routes from '../helpers/Routes';
 import './App.scss';
 // import { getSongs } from '../helpers/data/SongsData';
-// import { getLists } from '../helpers/data/ListsData';
+import { getLists } from '../helpers/data/ListsData';
 
 function App() {
   // const [songs, setSongs] = useState([]);
-  // const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState([]);
   const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   getLists().then(setLists);
-  // }, []);
-
   // useEffect(() => {
   //   getSongs().then(setSongs);
   // }, []);
@@ -33,10 +28,15 @@ function App() {
         // getLists(authed.uid).then((listsArray) => setLists(listsArray));
         // getSongs(authed.uid).then((songsArray) => setSongs(songsArray));
         setUser(userInfoObj);
+        getLists(authed.uid).then(setLists);
       } else if (user || user === null) {
         setUser(false);
       }
     });
+  }, []);
+
+  useEffect(() => {
+    getLists(user?.uid).then(setLists);
   }, []);
 
   return (
@@ -47,8 +47,8 @@ function App() {
       />
       <Routes
       user={user}
-      // lists={lists}
-      // setLists={setLists}
+      lists={lists}
+      setLists={setLists}
       // songs={songs}
       // setSongs={setSongs}
       />

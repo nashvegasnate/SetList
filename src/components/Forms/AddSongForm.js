@@ -1,28 +1,45 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Form, Input
+  Button,
+  Form,
+  Input,
+  FormGroup,
+  Label
 } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { createSong, updateSong } from '../../helpers/data/SongsData';
 
 export default function AddSongForm({
-  user, formTitle, setSongs, title, image, id, lists, firebaseKey
+  user,
+  formTitle,
+  setSongs,
+  title,
+  image,
+  lists,
+  firebaseKey,
+  text,
+  setShowButton
 }) {
   const [song, setSong] = useState({
     title: title || '',
     image: image || '',
+    text: text || '',
     firebaseKey: firebaseKey || null,
     uid: user.uid,
-    id: id || '',
   });
-  console.warn(song);
+  const [songInList, setSongInList] = useState('');
+
+  // const history = useHistory();
+  const handleAssignList = (e) => {
+    setSongInList(e.target.value);
+  };
+
   const handleInputChange = (e) => {
     setSong((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.name === 'favorite' ? e.target.checked : e.target.value
+      [e.target.name]: e.target.value
     }));
-    console.warn(song);
   };
 
   const history = useHistory();
@@ -32,55 +49,72 @@ export default function AddSongForm({
     if (song.firebaseKey) {
       updateSong(song, user).then(setSongs);
     } else {
-      createSong(song, user).then(setSongs);
-      history.push('songs');
+      createSong(song, user.uid, songInList).then(setSongs);
+      setShowButton(false);
+      history.push('/songs');
     }
   };
+    // createSong(song, user.uid).then(setSongs);
+
   return (
     <div className="song-form-container">
-      <Form className="add-song-form" autoComplete="off">
+      <Form id="add-song-form" autoComplete="off"
+      onSubmit={handleSubmit}
+      >
         <h4 className="mt-4 text-center mb-2">{formTitle}</h4>
-        <Input
-          name="title"
-          type="text"
-          placeholder="Title"
-          value={song.title}
-          onChange={handleInputChange}
-          className="mt-2"
-        ></Input>
+        <FormGroup>
+          <Label>SONG TITLE</Label>
+          <Input
+            name="title"
+            id="title"
+            type="text"
+            placeholder="Title"
+            value={song.title}
+            onChange={handleInputChange}
+            className="mt-2"
+          />
+        </FormGroup>
         <br></br>
-        <Input
-          name="imageUrl"
-          type="url"
-          placeholder="Image URL"
-          value={song.image}
-          onChange={handleInputChange}
-          className="mt-1"
-        ></Input>
-        <Input>
-        <Input
-          name="text"
-          type="text"
-          placeholder="Text Field"
-          value={song.text}
-          onChange={handleInputChange}
-          className="mt-2"
-        ></Input>
-        </Input>
+        <Label>CHART LINK</Label>
+        <FormGroup>
+          <Input
+            name="image"
+            id="image"
+            type="text"
+            placeholder="Image URL"
+            value={song.imageUrl}
+            onChange={handleInputChange}
+            className="mt-1"
+          />
+        </FormGroup>
         <br></br>
-        <Input
-          type="select"
-          name="firebaseKey"
-          placeholder="List Name"
-          id="exampleSelect"
-          onChange={handleInputChange}
-        >
+        <Label>SONG NOTES</Label>
+        <FormGroup>
+          <Input
+            name="text"
+            id="text"
+            type="text"
+            placeholder="Add Song Notes"
+            value={song.text}
+            onChange={handleInputChange}
+            className="mt-2"
+          />
+        </FormGroup>
+        <br></br>
+        <Label>ASSIGN SONG TO LIST</Label>
+          <Input
+            type="select"
+            name="listId"
+            placeholder="Assign to List"
+            id="exampleSelect"
+            onChange={handleAssignList}
+          >
           {lists?.map((list) => (
             <option key={list.firebaseKey} value={list.firebaseKey}>
               {list.title}
             </option>
           ))}
-        </Input>
+         </Input>
         <br></br>
         <Button
           color="danger"
@@ -97,11 +131,12 @@ export default function AddSongForm({
 
 AddSongForm.propTypes = {
   user: PropTypes.any,
-  formTitle: PropTypes.string,
-  setSongs: PropTypes.func,
-  title: PropTypes.string,
-  image: PropTypes.string,
-  firebaseKey: PropTypes.string,
-  lists: PropTypes.array,
-  id: PropTypes.any,
+  formTitle: PropTypes.string.isRequired,
+  setSongs: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  lists: PropTypes.array.isRequired,
+  text: PropTypes.string.isRequired,
+  firebaseKey: PropTypes.string.isRequired,
+  setShowButton: PropTypes.func
 };

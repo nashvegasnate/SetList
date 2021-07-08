@@ -1,42 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import ListCard from '../components/Cards/ListCard';
 import AddListForm from '../components/Forms/AddListForm';
-import { getLists } from '../helpers/data/ListsData';
 // import { getSongs } from '../helpers/data/SongsData';
 
 const ListContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 3%;
 `;
-function Lists({ user }) {
-  const [lists, setLists] = useState([]);
+function Lists({ user, lists, setLists }) {
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
     setShowButton((prevState) => !prevState);
   };
-  // const [songs, setSongs] = useState([]);
-
-  useEffect(() => {
-    getLists(user.uid).then(setLists);
-  }, []);
-
-  // useEffect(() => {
-  //   getSongs().then(setSongs);
-  // }, []);
 
   return (
-   <>
+   <div className="lists-page">
     <section className="header mt-2">
       { !showButton
-        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add A List</Button>
+        ? <Button className="m-2 btn-lg" color='primary' onClick={handleClick}>Add A List</Button>
         : <div>
         <Button className="m-2 btn-lg" color='info' onClick={handleClick}>Close</Button>
-          <AddListForm className="justify-content-center mt-3" setLists={setLists} user={user} lists={lists}/>
+          <AddListForm className="justify-content-center mt-3" setLists={setLists} user={user} lists={lists} formTitle={'Add New List'}/>
       </div>
       }
     </section>
@@ -53,12 +42,14 @@ function Lists({ user }) {
         />
       ))}
     </ListContainer>
-  </>
+  </div>
   );
 }
 
 Lists.propTypes = {
   user: PropTypes.any,
+  lists: PropTypes.array.isRequired,
+  setLists: PropTypes.func.isRequired
 };
 
 export default Lists;
