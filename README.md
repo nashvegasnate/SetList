@@ -37,14 +37,11 @@ SetList provides a clean, convenient way for any musician to organize any sheet 
 ## Screenshots
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 56 51 AM" src="https://user-images.githubusercontent.com/76710923/124955651-d2f4f480-dfdc-11eb-8579-b4c248f2ac68.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 57 20 AM" src="https://user-images.githubusercontent.com/76710923/124955701-dd16f300-dfdc-11eb-95d7-52d5fb13b9e4.png">
-
+<img width="1440" alt="Screen Shot 2021-07-08 at 10 59 30 AM" src="https://user-images.githubusercontent.com/76710923/124955855-03d52980-dfdd-11eb-82c2-6d617686f9c9.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 11 22 05 AM" src="https://user-images.githubusercontent.com/76710923/124957565-d7baa800-dfde-11eb-8050-3780e79ae830.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 11 19 47 AM" src="https://user-images.githubusercontent.com/76710923/124957805-16e8f900-dfdf-11eb-8bcc-9de9f7375c23.png">
-
-
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 58 06 AM" src="https://user-images.githubusercontent.com/76710923/124955760-ef912c80-dfdc-11eb-9b37-a2f255efef79.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 59 06 AM" src="https://user-images.githubusercontent.com/76710923/124955825-ff107580-dfdc-11eb-9dc3-3fd77b08d3c6.png">
-<img width="1440" alt="Screen Shot 2021-07-08 at 10 59 30 AM" src="https://user-images.githubusercontent.com/76710923/124955855-03d52980-dfdd-11eb-82c2-6d617686f9c9.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 11 00 14 AM" src="https://user-images.githubusercontent.com/76710923/124955891-0afc3780-dfdd-11eb-8261-6aa830574e42.png">
 
 
