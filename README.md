@@ -10,19 +10,6 @@ https://nk-capstone-setlist.netlify.app/
 ## Overview
 SetList is an app that permits a user to create, edit and delete lists of sheet music, charts, tablature, or notes on songs for organization and reference while playing. Whether you're a professional session musician, live performer, or just an amateur getting together with friends to jam, SetList provides a clean, convenient way to tote your tunes so that you'll never miss a beat!
 
-## Helpful Links
-- E.R.D.:
-https://dbdiagram.io/d/60b6c9e4b29a09603d178e98
-
-- Wireframe:
-https://www.figma.com/file/m0YqU3lUDSoMmR7e8RZ5KG/SetList?node-id=0%3A1
-
-- Data Flow Chart:
-https://lucid.app/lucidchart/08d28a24-fc4b-4eb8-81ef-e7c5900d1891/edit?beaconFlowId=0C27D6294979F729&page=0_0#
-
-- Project Board:
-https://github.com/nashvegasnate/SetList/projects/1
-
 ## User Story
 SetList provides a clean, convenient way for any musician to organize any sheet music, charts, tablature, or notes to songs for any occasion. The app allows an authenticated user to:
 - Add songs and upload text or url images
@@ -44,4 +31,25 @@ SetList provides a clean, convenient way for any musician to organize any sheet 
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 59 06 AM" src="https://user-images.githubusercontent.com/76710923/124955825-ff107580-dfdc-11eb-9dc3-3fd77b08d3c6.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 11 00 14 AM" src="https://user-images.githubusercontent.com/76710923/124955891-0afc3780-dfdd-11eb-8261-6aa830574e42.png">
 
+## Helpful Links
+- E.R.D.:
+https://dbdiagram.io/d/60b6c9e4b29a09603d178e98
 
+- Wireframe:
+https://www.figma.com/file/m0YqU3lUDSoMmR7e8RZ5KG/SetList?node-id=0%3A1
+
+- Data Flow Chart:
+https://lucid.app/lucidchart/08d28a24-fc4b-4eb8-81ef-e7c5900d1891/edit?beaconFlowId=0C27D6294979F729&page=0_0#
+
+- Project Board:
+https://github.com/nashvegasnate/SetList/projects/1
+
+- Bio Site:
+https://nathan-keith.netlify.app/
+
+## Contributor
+Nathan Keith
+
+Email: nashvegasnate@gmail.com
+
+GitHub: https://github.com/nashvegasnate
