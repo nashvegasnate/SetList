@@ -21,6 +21,9 @@ SetList provides a clean, convenient way for any musician to organize any sheet 
 - Delete lists 
 - Delete from and/or re-assign songs to any desired list
 
+## Loom Video Walk-through
+https://www.loom.com/share/dd0bcf59a4de450696c2a76de27d51b6
+
 ## Screenshots
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 56 51 AM" src="https://user-images.githubusercontent.com/76710923/124955651-d2f4f480-dfdc-11eb-8579-b4c248f2ac68.png">
 <img width="1440" alt="Screen Shot 2021-07-08 at 10 57 20 AM" src="https://user-images.githubusercontent.com/76710923/124955701-dd16f300-dfdc-11eb-95d7-52d5fb13b9e4.png">
