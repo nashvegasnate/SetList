@@ -1,10 +1,6 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
-@import 'lists';
-@import 'navBar';
-@import 'songs';
-@import 'singleLists';
 
 body {
-  background-color: rgb(21, 62, 70);
+  background-color: $favColor;
 }

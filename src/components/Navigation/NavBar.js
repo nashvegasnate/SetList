@@ -30,7 +30,7 @@ const NavBar = ({ user }) => {
   );
 
   return (
-    <div className="navBar">
+    <div>
       <Navbar color="light" light expand="md" className='justify-content-between'>
         <NavbarBrand href="/">
           <img src={clef} width="30" height="50" />

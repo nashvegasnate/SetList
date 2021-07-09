@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  FormGroup,
-  Form,
-  Input,
-  Label
-} from 'reactstrap';
+import { Button } from 'reactstrap';
 import { createList } from '../../helpers/data/ListsData';
 
 export default function AddListForm({ user, formTitle, setLists }) {
   const [list, setList] = useState({
     title: '',
     image: '',
+    firebaseKey: '',
     uid: user.uid
   });
 
@@ -31,39 +26,37 @@ export default function AddListForm({ user, formTitle, setLists }) {
 
   return (
     <div className='list-form-container'>
-      <Form id='add-list-form'
+      <form
+        className='add-list-form'
         autoComplete='off'
       >
         <h1>{formTitle}</h1>
-        <FormGroup>
-        <Label>List Title: </Label>
-        <Input
+        <label>Title:</label>
+        <input
           name='title'
           type='text'
           placeholder='Title'
           value={list.title}
           onChange={handleInputChange}
-        />
-          </FormGroup>
-        <br></br>
-        <Label>Image Url: </Label>
-        <FormGroup>
-          <Input
+        >
+        </input>
+        <label>Image Url:</label>
+        <input
           name='image'
           type='url'
           placeholder='Image URL'
           value={list.imageUrl}
           onChange={handleInputChange}
-        />
-        </FormGroup>
+        >
+        </input>
         <Button color="danger" type='submit' onClick={handleSubmit} className='mt-4'>Submit</Button>
-      </Form>
+      </form>
     </div>
   );
 }
 
 AddListForm.propTypes = {
   user: PropTypes.any,
-  formTitle: PropTypes.string.isRequired,
-  setLists: PropTypes.func.isRequired,
+  formTitle: PropTypes.string,
+  setLists: PropTypes.func
 };

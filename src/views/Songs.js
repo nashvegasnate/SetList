@@ -10,9 +10,9 @@ const SongContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 5px;
+  margin-top: 5%;
 `;
-function Songs({ user, lists }) {
+function Songs({ user }) {
   const [songs, setSongs] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const handleClick = () => {
@@ -21,17 +21,17 @@ function Songs({ user, lists }) {
   // const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    getSongs(user?.uid).then(setSongs);
+    getSongs(user.uid).then(setSongs);
   }, []);
 
   return (
-    <div className="songs-page">
+    <>
     <section className="header mt-2">
       { !showButton
-        ? <Button className="m-2 btn-lg" color='primary' onClick={handleClick}>Add Song</Button>
+        ? <Button className="m-2 btn-lg" color='danger' onClick={handleClick}>Add Song</Button>
         : <div>
         <Button className="m-2 btn-lg" color='info' onClick={handleClick}>Close</Button>
-        <AddSongForm className="justify-content-center mt-3" lists={lists} setSongs={setSongs} user={user} songs={songs} setShowButton={setShowButton} />
+        <AddSongForm className="justify-content-center mt-3" setSongs={setSongs} user={user} songs={songs}/>
         </div>
       }
     </section>
@@ -42,17 +42,14 @@ function Songs({ user, lists }) {
         song={songInfo}
         user={user}
         setSongs={setSongs}
-        lists={lists}
-        {...songInfo}
       />
       ))}
       </SongContainer>
-    </div>
+    </>
   );
 }
 
 Songs.propTypes = {
   user: PropTypes.any,
-  lists: PropTypes.array.isRequired
 };
 export default Songs;
